@@ -17,17 +17,25 @@ CREATE TABLE hiscore (playerName VARCHAR(20), score INT, date DATETIME);
 
 That should do the trick!
 
-So, what are the main differences to traditional yahtzee?
-Well, I already mentioned that there are 6 dice instead of 5. In addition, the dice are colored, meaning every side of a die has a different background color.
-This gives several new scoring categories.
-Let's start with the ones where you don't need to worry about the background colors of the dice.
+But WHY six dice and colored?
+Well, first of all, I was introduced to the traditional Yahtzee in the 90s.
+Then, in early 2000s, I found an online game that had colored dice and some cool scoring categories, such as Painted House, Flush and Rainbow.
+I also found a variation of the traditional (non-colored) Yahtzee that had six dice instead of five and scoring categories such as 3 Pairs, 2x 3 of a Kind etc.
+Although I really liked the colored (five dice) Yahtzee, I noticed a problem in it... there are six sides on each die, but only five colors.
+This means that on each die, one color is over-represented.
+Consequently, this would result in either unbalanced colors or each die have exactly same number combinations double-colored.
+Solution: combine 6 dice traditional Yahtzee with colored Yahtzee!
 
-3 Pairs			: this means 3 distinct pairs, for example 2-2-4-4-6-6 (this would give a score of 24)
-2x 3 of a Kind		: this means 2 distinct sets of 3, for example 4-4-4-5-5-5 (this would give a score of 27)
-5 of a Kind		: self-explanatory, but this is not yahtzee in the 6 dice version, for example 5-5-5-5-5-6 (this would give a score of 25)
-Huge Straight		: even longer than the large straight in traditional yahtzee, requires all six dice to make 1-2-3-4-5-6, gives a score of 35
+So, what are the main differences to traditional Yahtzee and/or colored Yahtzee?
+Like I already mentioned that there are 6 dice instead of 5 and the dice are colored, meaning every side of a die has a different background color.
+This gives several new scoring categories, which are explained below.
+
+3 Pairs			        : this means 3 distinct pairs, for example 2-2-4-4-6-6 (this would give a score of 24)
+2x 3 of a Kind		  : this means 2 distinct sets of 3, for example 4-4-4-5-5-5 (this would give a score of 27)
+5 of a Kind		      : self-explanatory, but this is not yahtzee in the 6 dice version, for example 5-5-5-5-5-6 (this would give a score of 25)
+Huge Straight		    : even longer than the large straight in traditional yahtzee, requires all six dice to make 1-2-3-4-5-6, gives a score of 35
 Extended Full House	: a set of four combined with a pair, for example 1-1-1-1-3-3, gives a score of 35
-Yahtzee			: requires all six dice to have the same number of eyes, worth 50 points
+Yahtzee			        : requires all six dice to have the same number of eyes, worth 50 points
 
 Then we have those where the color matters.
 
@@ -39,14 +47,14 @@ Bonuses are 50 points in each section.
 
 We have the following ones remaining:
 
-3 of a Color		: self-explanatory
-4 of a Color		: self-explanatory
-5 of a Color		: self-explanatory
-2x 3 of a Color		: almost self explanatory... 2 sets of 3 of a Color, for example 3 purples and 3 blues
-Painted House		: the full house of colors, for example 3 greens with 2 yellows, worth 25 points
+3 of a Color		        : self-explanatory
+4 of a Color		        : self-explanatory
+5 of a Color		        : self-explanatory
+2x 3 of a Color		      : almost self explanatory... 2 sets of 3 of a Color, for example 3 purples and 3 blues
+Painted House		        : the full house of colors, for example 3 greens with 2 yellows, worth 25 points
 Extended Painted House	: the color version of extended full house, for example 4 oranges with 2 reds, worth 35 points
-Rainbow			: all dice have different background color, worth 40 points
-Flush			: all dice have the same background color, worth 50 points
+Rainbow			            : all dice have different background color, worth 40 points
+Flush			              : all dice have the same background color, worth 50 points
 
 Special rule:
 If a player has already assigned a Yahtzee to the Yahtzee cell and throws another Yahtzee,
