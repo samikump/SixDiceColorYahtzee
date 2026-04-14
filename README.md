@@ -13,3 +13,10 @@ It features a graphical user interface (GUI) developed with Swing and a MySQL da
     User-Friendly GUI: Intuitive interface built with Java Swing.
     Las Vegas Theme: Dice and Hold buttons are designed Vegas-like.
     Secure Configuration: Credential management using local .properties files (excluded from version control).
+
+🛠️ Technologies Used
+
+    Language: Java
+    GUI Framework: Java Swing
+    Database: MySQL
+    Build Tool: Maven
