@@ -1,22 +1,23 @@
-🎲 Six Dice Color Yahtzee
-An enhanced version of the traditional dice game implementation using Java Swing and MySQL.
+🎲 Six Dice Color Yahtzee: Las Vegas Edition
+A high-stakes Java Swing implementation of the classic dice game with a colorful twist.
 
 📖 Project Overview
-This project is a fully functional Six Dice Color Yahtzee game built with Java - now with Las Vegas theme!
-It features a graphical user interface (GUI) developed with Swing and a MySQL database backend to manage persistent high scores.
+Experience Yahtzee like never before! This Java-based desktop application brings a "Las Vegas" atmosphere to the game.
+Unlike the traditional game, this version combines Six-Dice mechanics with Color Yahtzee rules, creating a deeper strategic experience.
+Designed with a clean MVC-inspired architecture, it uses Java Swing for a vibrant UI and MySQL for robust data persistence.
 
 ✨ Key Features
 
-    New Gameplay: Combines the six dice version of traditional Yahtzee with Color Yahtzee!
-    New Scoring Categories: Six dice instead of five make several new scoring
-    Dynamic High Scores: Persistent leaderboard powered by a MySQL database.
-    User-Friendly GUI: Intuitive interface built with Java Swing.
-    Las Vegas Theme: Dice and Hold buttons are designed Vegas-like.
-    Secure Configuration: Credential management using local .properties files (excluded from version control).
+    Six Dice Gameplay: A rare variation that adds complexity and higher scoring potential than the standard 5-dice game.
+    Color Yahtzee Integration: Scoring is based on both numbers and dice colors, offering a fresh layer of strategy.
+    Las Vegas Aesthetics: Custom-designed dice assets and "Hold" buttons themed after the neon lights of Vegas.
+    Live Leaderboard: A dynamic MySQL High Score system that tracks top performers across sessions.
+    Secure & Modular: Professional-grade credential management using externalized .properties files to keep your database safe.
 
-🛠️ Technologies Used
+🛠️ Tech Stack & Architecture
 
     Language: Java
     GUI Framework: Java Swing
-    Database: MySQL
-    Build Tool: Maven
+    Backend: MySQL 8.0+
+    Build System: Maven
+    Database Connectivity: JDBC
