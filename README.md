@@ -16,6 +16,25 @@ Designed with a clean **MVC-inspired architecture**, it uses **Java Swing** for 
 ### 🛠️ Tech Stack & Architecture
 *   **Language**: Java
 *   **GUI Framework**: Java Swing
-*   **Backend**: MySQL 8.0+
+*   **Database**: MySQL 8.0+
 *   **Build System**: Maven
 *   **Database Connectivity**: JDBC
+
+### 🚀 How to run it
+
+To run this project locally, you will need to set up your local environment:
+
+1.  **Database Setup**: Ensure you have a MySQL server running and create a database for the project.
+    *  The MySQL script for the database is relatively simple:
+    *  ```sql
+    *  CREATE DATABASE Yahtzee;
+    *  USE Yahtzee;
+    *  CREATE TABLE hiscore (playerName VARCHAR(20), score INT, date DATETIME);
+2.  **Configuration**:
+    *   Locate the `dbconfig.properties.example` file in the project root.
+    *   Create a copy of it and rename the copy to `dbconfig.properties`.
+    *   Open `dbconfig.properties` and fill in your local MySQL root password
+3.  **Build & Run**:
+    *   Open the project in NetBeans (or your preferred IDE).
+    *   Clean and Build the project using Maven.
+    *   Run the SixDiceColorYahtzee class to start the game.
