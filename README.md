@@ -26,15 +26,17 @@ To run this project locally, you will need to set up your local environment:
 
 1.  **Database Setup**: Ensure you have a MySQL server running and create a database for the project.
     *  The MySQL script for the database is relatively simple:
-    *  ```sql
-    *  CREATE DATABASE Yahtzee;
-    *  USE Yahtzee;
-    *  CREATE TABLE hiscore (playerName VARCHAR(20), score INT, date DATETIME);
+       ```sql
+       CREATE DATABASE Yahtzee;
+       USE Yahtzee;
+       CREATE TABLE hiscore (playerName VARCHAR(20), score INT, date DATETIME);
+       ```
 2.  **Configuration**:
     *   Locate the `dbconfig.properties.example` file in the project root.
     *   Create a copy of it and rename the copy to `dbconfig.properties`.
-    *   Open `dbconfig.properties` and fill in your local MySQL root password
+    *   Open `dbconfig.properties` and fill in your local MySQL **root password**.
+    *   *(Note: The application currently uses 'root' as the default database user).*
 3.  **Build & Run**:
     *   Open the project in NetBeans (or your preferred IDE).
     *   Clean and Build the project using Maven.
-    *   Run the SixDiceColorYahtzee class to start the game.
+    *   Run the `SixDiceColorYahtzee` class to start the game.
