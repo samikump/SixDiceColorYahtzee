@@ -25,12 +25,12 @@ public class SixDiceColorYahtzee extends JFrame {
 
     private static final String[] COLORS = {"purple", "red", "orange", "yellow", "green", "blue"};
     private static final Color[] AWT_COLORS = {
-        new Color(102, 0, 102), // purple
-        new Color(153, 0, 0),   // red
-        new Color(204, 82, 0),  // orange
-        new Color(184, 134, 11), // dark goldenrod (better contrast with white)
-        new Color(0, 102, 0),   // green
-        new Color(0, 51, 153)   // blue
+        new Color(102, 0, 102),  // purple
+        new Color(153, 0, 0),    // red
+        new Color(204, 82, 0),   // orange
+        new Color(184, 134, 11), // dark gold
+        new Color(0, 102, 0),    // green
+        new Color(0, 51, 153)    // blue
     };
 
     private List<Player> players = new ArrayList<>();
@@ -566,9 +566,11 @@ public class SixDiceColorYahtzee extends JFrame {
         mainPanel.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(new Color(218, 165, 32), 3),
                 BorderFactory.createEmptyBorder(20, 20, 20, 20)));
+        
+        mainPanel.setPreferredSize(new Dimension(650, 450));
 
         JLabel title = new JLabel("FINAL RESULTS", SwingConstants.CENTER);
-        title.setFont(new Font("Serif", Font.BOLD, 32));
+        title.setFont(new Font("Serif", Font.BOLD, 28));
         title.setForeground(new Color(218, 165, 32));
         mainPanel.add(title, BorderLayout.NORTH);
 
@@ -602,17 +604,18 @@ public class SixDiceColorYahtzee extends JFrame {
                 names = tiedPlayers.get(0);
             }
             
-            JLabel rankLabel = new JLabel(rankStr + " PLACE: " + names.toUpperCase(), SwingConstants.LEFT);
-            rankLabel.setFont(new Font("Serif", Font.BOLD, 20));
+            // Use HTML for potential wrapping if names are very long
+            JLabel rankLabel = new JLabel("<html>" + rankStr + " PLACE: " + names.toUpperCase() + "</html>", SwingConstants.LEFT);
+            rankLabel.setFont(new Font("Serif", Font.BOLD, 16));
             
             // Rank-specific colors
-            if (currentRank == 1) rankLabel.setForeground(new Color(218, 165, 32)); // Gold
+            if (currentRank == 1) rankLabel.setForeground(new Color(218, 165, 32));       // Gold
             else if (currentRank == 2) rankLabel.setForeground(new Color(192, 192, 192)); // Silver
-            else if (currentRank == 3) rankLabel.setForeground(new Color(205, 127, 50)); // Bronze
+            else if (currentRank == 3) rankLabel.setForeground(new Color(205, 127, 50));  // Bronze
             else rankLabel.setForeground(Color.WHITE);
 
             JLabel scoreLabel = new JLabel(String.valueOf(score), SwingConstants.RIGHT);
-            scoreLabel.setFont(new Font("Serif", Font.BOLD, 20));
+            scoreLabel.setFont(new Font("Serif", Font.BOLD, 16));
             scoreLabel.setForeground(rankLabel.getForeground());
 
             gbc.gridy = i;
@@ -629,7 +632,7 @@ public class SixDiceColorYahtzee extends JFrame {
                 .collect(Collectors.toList());
         
         JLabel congrats = new JLabel("Congratulations " + String.join(" and ", winners) + "!", SwingConstants.CENTER);
-        congrats.setFont(new Font("Serif", Font.ITALIC, 22));
+        congrats.setFont(new Font("Serif", Font.ITALIC, 18));
         congrats.setForeground(Color.WHITE);
         congrats.setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
 
