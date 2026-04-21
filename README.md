@@ -40,3 +40,5 @@ To run this project locally, you will need to set up your local environment:
     *   Open the project in NetBeans (or your preferred IDE).
     *   Clean and Build the project using Maven.
     *   Run the `SixDiceColorYahtzee` class to start the game.
+
+TODO: Styling for the hiscore table
