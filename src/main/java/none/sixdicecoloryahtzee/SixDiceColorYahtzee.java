@@ -11,8 +11,8 @@ package none.sixdicecoloryahtzee;
 
 import java.awt.*;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -711,14 +711,75 @@ public class SixDiceColorYahtzee extends JFrame {
         Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(sql);
 
-        DefaultTableModel model = new DefaultTableModel(new String[]{"Player", "Score", "Date"}, 0);
+        JPanel mainPanel = new JPanel(new BorderLayout(10, 20));
+        mainPanel.setBackground(new Color(0, 80, 40));
+        mainPanel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(218, 165, 32), 3),
+                BorderFactory.createEmptyBorder(20, 20, 20, 20)));
+        mainPanel.setPreferredSize(new Dimension(750, 550));
+
+        JLabel title = new JLabel("LAS VEGAS HIGH ROLLER BOARD", SwingConstants.CENTER);
+        title.setFont(new Font("Serif", Font.BOLD, 32));
+        title.setForeground(new Color(218, 165, 32));
+        mainPanel.add(title, BorderLayout.NORTH);
+
+        JPanel listPanel = new JPanel(new GridBagLayout());
+        listPanel.setOpaque(false);
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.insets = new Insets(5, 10, 5, 10);
+        gbc.weightx = 1.0;
+
+        // Header Row
+        gbc.gridy = 0;
+        addScoreRow(listPanel, gbc, "RANK", "PLAYER NAME", "SCORE", "DATE", true);
+
+        int rank = 1;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         while (rs.next()) {
-            model.addRow(new Object[]{rs.getString("playerName"), rs.getInt("score"), rs.getTimestamp("date")});
+            gbc.gridy = rank;
+            String name = rs.getString("playerName");
+            int score = rs.getInt("score");
+            String date = sdf.format(rs.getTimestamp("date"));
+            addScoreRow(listPanel, gbc, rank + ".", name.toUpperCase(), String.valueOf(score), date, false);
+            rank++;
         }
 
-        JTable table = new JTable(model);
-        JOptionPane.showMessageDialog(this, new JScrollPane(table), "All-Time High Scores", JOptionPane.INFORMATION_MESSAGE);
+        JScrollPane scrollPane = new JScrollPane(listPanel);
+        scrollPane.setOpaque(false);
+        scrollPane.getViewport().setOpaque(false);
+        scrollPane.setBorder(null);
+        mainPanel.add(scrollPane, BorderLayout.CENTER);
+
+        JOptionPane.showMessageDialog(this, mainPanel, "All-Time High Scores", JOptionPane.PLAIN_MESSAGE);
     } // showHighScores method ends here
+
+    private void addScoreRow(JPanel panel, GridBagConstraints gbc, String rank, String name, String score, String date, boolean isHeader) {
+        Color textColor = isHeader ? new Color(218, 165, 32) : Color.WHITE;
+        if (!isHeader) {
+            if (rank.equals("1.")) textColor = new Color(218, 165, 32); // Gold
+            else if (rank.equals("2.")) textColor = new Color(192, 192, 192); // Silver
+            else if (rank.equals("3.")) textColor = new Color(205, 127, 50); // Bronze
+        }
+
+        Font font = new Font("Serif", isHeader ? Font.BOLD : Font.PLAIN, 16);
+        
+        gbc.gridx = 0; gbc.weightx = 0.1;
+        JLabel rL = new JLabel(rank); rL.setFont(font); rL.setForeground(textColor);
+        panel.add(rL, gbc);
+
+        gbc.gridx = 1; gbc.weightx = 0.5;
+        JLabel nL = new JLabel(name); nL.setFont(font); nL.setForeground(textColor);
+        panel.add(nL, gbc);
+
+        gbc.gridx = 2; gbc.weightx = 0.15;
+        JLabel sL = new JLabel(score, SwingConstants.RIGHT); sL.setFont(font); sL.setForeground(textColor);
+        panel.add(sL, gbc);
+
+        gbc.gridx = 3; gbc.weightx = 0.25;
+        JLabel dL = new JLabel(date, SwingConstants.RIGHT); dL.setFont(font); dL.setForeground(textColor);
+        panel.add(dL, gbc);
+    } // addScoreRow method ends here
 
     private void resetGame() {
         players.clear();
@@ -884,7 +945,7 @@ public class SixDiceColorYahtzee extends JFrame {
                 holdButton.setText("HOLD");
                 holdButton.setBorder(BorderFactory.createRaisedBevelBorder());
             }
-        } // updateHoldButtonState ends here
+        } // updateHoldButtonState method ends here
 
         public void roll() {
             if (!locked) {
@@ -899,7 +960,7 @@ public class SixDiceColorYahtzee extends JFrame {
             holdButton.setSelected(false);
             updateHoldButtonState();
             updateUI();
-        } // reset method ends here
+        } // minReset method ends here
 
         public void reset() {
             value = 0;
@@ -940,7 +1001,7 @@ public class SixDiceColorYahtzee extends JFrame {
         }
         @Override public int getIconWidth() { return 74; }
         @Override public int getIconHeight() { return 22; }
-    } // ColorBarIcon method ends here
+    } // private static class ColorBarIcon ends here
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(SixDiceColorYahtzee::new);
