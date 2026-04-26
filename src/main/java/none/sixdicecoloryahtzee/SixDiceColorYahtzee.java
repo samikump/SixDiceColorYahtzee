@@ -205,7 +205,7 @@ public class SixDiceColorYahtzee extends JFrame {
         scorePanel.removeAll();
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new Insets(1, 6, 1, 6); // Tighter insets to save space
+        gbc.insets = new Insets(1, 6, 1, 6);
         gbc.weightx = 1.0;
 
         Player cp = players.get(currentPlayerIndex);
@@ -217,10 +217,12 @@ public class SixDiceColorYahtzee extends JFrame {
         gbc.gridx = 0;
         gbc.gridy = row++;
         gbc.gridwidth = 2;
+        gbc.anchor = GridBagConstraints.CENTER;
         JLabel nameLabel = new JLabel("PLAYER: " + cp.name.toUpperCase(), SwingConstants.CENTER);
-        nameLabel.setFont(new Font("Serif", Font.BOLD, 18));
+        nameLabel.setFont(new Font("Serif", Font.BOLD, 20));
         nameLabel.setForeground(new Color(150, 0, 0));
-        nameLabel.setBorder(BorderFactory.createEmptyBorder(2, 0, 2, 0));
+        // Balanced padding
+        nameLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); 
         scorePanel.add(nameLabel, gbc);
 
         int col = 0;
@@ -295,6 +297,14 @@ public class SixDiceColorYahtzee extends JFrame {
                 if (col == 2) { col = 0; row++; }
             }
         }
+        
+        // Add a filler at the bottom to push everything to the top of the scroll pane
+        gbc.gridx = 0;
+        gbc.gridy = row;
+        gbc.gridwidth = 2;
+        gbc.weighty = 1.0;
+        scorePanel.add(new JLabel(""), gbc);
+        
         scorePanel.revalidate();
         scorePanel.repaint();
     } // updateScorePanel method ends here
@@ -879,15 +889,20 @@ public class SixDiceColorYahtzee extends JFrame {
                         baseColor = AWT_COLORS[(index + value - 1) % 6];
                     }
 
-                    // Glossy Las Vegas style with gradient
-                    GradientPaint gp = new GradientPaint(0, 0, baseColor.brighter(), 0, h, baseColor.darker());
+                    // Vegas Precision Acrylic look (Deep colors, sharper edges)
+                    GradientPaint gp = new GradientPaint(0, 0, baseColor.brighter(), 0, h, baseColor.darker().darker());
                     g2.setPaint(gp);
-                    g2.fillRoundRect(0, 0, w, h, 14, 14);
+                    g2.fillRoundRect(0, 0, w, h, 8, 8); // Sharper corners for Vegas style
 
-                    // Border
-                    g2.setColor(new Color(50, 50, 50));
-                    g2.setStroke(new BasicStroke(2.5f));
-                    g2.drawRoundRect(1, 1, w-2, h-2, 14, 14);
+                    // Subtle inner depth
+                    g2.setColor(new Color(255, 255, 255, 30));
+                    g2.setStroke(new BasicStroke(1.0f));
+                    g2.drawRoundRect(2, 2, w-4, h-4, 6, 6);
+
+                    // Defined border
+                    g2.setColor(new Color(30, 30, 30));
+                    g2.setStroke(new BasicStroke(2.0f));
+                    g2.drawRoundRect(1, 1, w-2, h-2, 8, 8);
 
                     if (value == 0) {
                         g2.setColor(Color.DARK_GRAY);
@@ -895,7 +910,6 @@ public class SixDiceColorYahtzee extends JFrame {
                         FontMetrics fm = g2.getFontMetrics();
                         g2.drawString("?", (w - fm.stringWidth("?")) / 2, (h + fm.getAscent()) / 2 - 4);
                     } else {
-                        g2.setColor(Color.WHITE);
                         int d = w / 5; 
                         int margin = w / 4;
                         switch (value) {
@@ -909,10 +923,16 @@ public class SixDiceColorYahtzee extends JFrame {
                     }
                 }
                 private void drawPip(Graphics2D g2, int x, int y, int d) {
+                    // Subtle shadow for "drilled" look
+                    g2.setColor(new Color(0, 0, 0, 80));
+                    g2.fillOval(x - d/2 + 1, y - d/2 + 1, d, d);
+                    
+                    g2.setColor(Color.WHITE);
                     g2.fillOval(x - d/2, y - d/2, d, d);
+                    
+                    // Subtle rim for the pip
                     g2.setColor(new Color(0, 0, 0, 40));
                     g2.drawOval(x - d/2, y - d/2, d, d);
-                    g2.setColor(Color.WHITE);
                 }
             };
             dieGraphic.setPreferredSize(new Dimension(70, 70));
