@@ -179,6 +179,7 @@ public class SixDiceColorYahtzee extends JFrame {
         controlPanel.add(rollsLabel);
 
         scorePanel = new JPanel(new GridBagLayout());
+        scorePanel.setBackground(new Color(0, 60, 30)); // Darker casino green for the table
         updateScorePanel();
 
         statusLabel = new JLabel(players.get(0).name + "'s turn! Roll to start.", SwingConstants.CENTER);
@@ -205,7 +206,7 @@ public class SixDiceColorYahtzee extends JFrame {
         scorePanel.removeAll();
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.fill = GridBagConstraints.HORIZONTAL;
-        gbc.insets = new Insets(1, 6, 1, 6);
+        gbc.insets = new Insets(2, 8, 2, 8);
         gbc.weightx = 1.0;
 
         Player cp = players.get(currentPlayerIndex);
@@ -220,7 +221,7 @@ public class SixDiceColorYahtzee extends JFrame {
         gbc.anchor = GridBagConstraints.CENTER;
         JLabel nameLabel = new JLabel("PLAYER: " + cp.name.toUpperCase(), SwingConstants.CENTER);
         nameLabel.setFont(new Font("Serif", Font.BOLD, 20));
-        nameLabel.setForeground(new Color(150, 0, 0));
+        nameLabel.setForeground(new Color(218, 165, 32)); // Gold for player name
         // Balanced padding
         nameLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0)); 
         scorePanel.add(nameLabel, gbc);
@@ -243,13 +244,13 @@ public class SixDiceColorYahtzee extends JFrame {
                 if (category.contains("Total Score")) {
                     label.setBackground(new Color(218, 165, 32)); 
                     label.setForeground(Color.BLACK);
-                    label.setFont(new Font("SansSerif", Font.BOLD, 15));
+                    label.setFont(new Font("SansSerif", Font.BOLD, 16));
                 } else {
-                    label.setBackground(new Color(215, 215, 215));
-                    label.setForeground(new Color(30, 30, 30));
+                    label.setBackground(new Color(20, 20, 20));
+                    label.setForeground(new Color(218, 165, 32));
                 }
                 label.setBorder(BorderFactory.createCompoundBorder(
-                        BorderFactory.createLineBorder(Color.GRAY),
+                        BorderFactory.createLineBorder(new Color(218, 165, 32), 1),
                         BorderFactory.createEmptyBorder(3, 10, 3, 10)));
                 scorePanel.add(label, gbc);
             } else {
@@ -258,7 +259,7 @@ public class SixDiceColorYahtzee extends JFrame {
                 gbc.gridwidth = 1;
                 
                 JButton btn = new JButton();
-                btn.setFont(new Font("SansSerif", Font.BOLD, 11));
+                btn.setFont(new Font("SansSerif", Font.BOLD, 13));
                 btn.setFocusPainted(false);
                 btn.setBorder(BorderFactory.createLineBorder(new Color(218, 165, 32), 1));
                 
@@ -277,8 +278,8 @@ public class SixDiceColorYahtzee extends JFrame {
                         btn.setText(category + ": " + score);
                     }
                     btn.setEnabled(false);
-                    btn.setBackground(new Color(240, 240, 240));
-                    btn.setForeground(Color.DARK_GRAY);
+                    btn.setBackground(new Color(40, 40, 40));
+                    btn.setForeground(Color.GRAY);
                 } else {
                     int potential = calculateScore(category);
                     if (colorCats.contains(category)) {
@@ -288,8 +289,8 @@ public class SixDiceColorYahtzee extends JFrame {
                     }
                     btn.addActionListener(e -> assignScore(category, potential));
                     if (rollsLeft == 4) btn.setEnabled(false);
-                    btn.setBackground(Color.WHITE);
-                    btn.setForeground(new Color(0, 102, 51)); 
+                    btn.setBackground(new Color(20, 20, 20));
+                    btn.setForeground(new Color(218, 165, 32)); 
                 }
                 scorePanel.add(btn, gbc);
                 
