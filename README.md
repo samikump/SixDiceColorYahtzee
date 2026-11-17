@@ -41,4 +41,4 @@ To run this project locally, you will need to set up your local environment:
     *   Clean and Build the project using Maven.
     *   Run the `SixDiceColorYahtzee` class to start the game.
   
-TODO: possibility to play against AI opponents 
+TODO: Add possibility to play against AI opponents 
