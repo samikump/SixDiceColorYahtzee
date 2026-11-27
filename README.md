@@ -7,11 +7,11 @@ Unlike traditional Yahtzee, it combines **six-dice mechanics** with **Color Yaht
 Built with a clean **MVC-inspired architecture**, it uses **Java Swing** for the UI and **MySQL** for data storage.
 
 ### ✨ Key Features
-*   **Six Dice Gameplay**: A rare variation that adds complexity and higher scoring potential than the standard 5-dice game.
+*   **Six Dice Gameplay**: A rare variation with more strategy and higher scoring than the standard 5-dice game.
 *   **Color Yahtzee Integration**: Scoring is based on both numbers and dice colors, offering a fresh layer of strategy.
 *   **Las Vegas Theme**: Custom-designed dice assets and "Hold" buttons in Vegas style!
 *   **Live Leaderboard**: A dynamic **MySQL High Score** system that tracks top performers across sessions.
-*   **Secure & Modular**: Professional-grade credential management using externalized `.properties` files to keep your database safe.
+*   **Secure & Modular**: Safe database credential management using externalized .properties file.
 
 ### 🛠️ Tech Stack & Architecture
 *   **Language**: Java
