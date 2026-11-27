@@ -2,9 +2,9 @@
 **A Java Swing implementation of the classic dice game with a colorful twist.**
 
 ### 📖 Project Overview
-Experience Yahtzee like never before! This **Java-based desktop application** brings a "Las Vegas" atmosphere to the game.  
-Unlike the traditional game, this version combines **Six-Dice mechanics** with **Color Yahtzee** rules, creating a deeper strategic experience.  
-Designed with a clean **MVC-inspired architecture**, it uses **Java Swing** for a vibrant UI and **MySQL** for robust data persistence.
+Experience Yahtzee like never before! This **Java desktop app** brings a Las Vegas theme to the game.  
+Unlike traditional Yahtzee, it combines **six-dice mechanics** with **Color Yahtzee** rules for deeper strategy.  
+Built with a clean **MVC-inspired architecture**, it uses **Java Swing** for the UI and **MySQL** for data storage.
 
 ### ✨ Key Features
 *   **Six Dice Gameplay**: A rare variation that adds complexity and higher scoring potential than the standard 5-dice game.
